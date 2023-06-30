@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- SEO -->
+    <meta name="title" content="Tailstart">
+    <meta name="description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components">
+    <meta name="robots" content="index, follow">
+ 
+     <!-- Facebook open graph -->
+     <meta property="og:url" content="https://mkfizi.dev/tailstart">
+     <meta property="og:type" content="website">
+     <meta property="og:title" content="Tailstart">
+     <meta property="og:image" content="https://https://mkfizi.dev/tailstart/src/images/fb-og.jpg">
+     <meta property="og:description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components">
+     <meta property="og:site_name" content="Tailstart">
+ 
+     <!-- Twitter cards -->
+     <meta name="twitter:card" content="summary">
+     <meta name="twitter:site" content="@mkfizi">
+     <meta name="twitter:creator" content="@mkfizi">
+     <meta name="twitter:url" content="https://mkfizi.dev/tailstart">
+     <meta name="twitter:title" content="Tailstart">
+     <meta name="twitter:description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components">
+     <meta name="twitter:image" content="https://https://mkfizi.dev/tailstart/src/images/tw-card.jpg">
+
+    <!-- Favicon -->
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/css/app.css">
+    <link rel="preload" as="font">
+
+    <!-- Scripts -->
+    <script src="./src/js/app.js" defer></script>
+
+    <!-- 
+        Handle dark mode toggle when the page is loaded.
+
+        These codes below are called here instead of being inside app.js 
+        to avoid FOUC should app.js type is defined as a module. 
+    -------------------------------------------------------------------------->
+    <script>
+        if (localStorage.theme === "light" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: light)").matches)) {
+            localStorage.theme = 'light';
+            document.documentElement.classList.remove("dark");
+        } else if (localStorage.theme === "dark" || (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+            localStorage.theme = 'dark';
+            document.documentElement.classList.add("dark")
+        };
+    </script>
+
+    <title>Tailstart | Website</title>
+</head>
+<body class="relative min-h-screen antialiased bg-white dark:bg-neutral-900">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 w-full h-16 bg-white border-b border-transparent dark:bg-neutral-900 dark:border-transparent">
+        <div class="flex items-center justify-between w-full h-full max-w-screen-xl px-4 mx-auto sm:px-8">
+            <!-- Logo -->
+            <a href="./" class="flex gap-4">
+                <img src="./src/images/logo.png" alt="Tailstart Logo" class="w-6 h-6 dark:hidden">
+                <img src="./src/images/logo-dark.png" alt="Tailstart Logo" class="hidden w-6 h-6 dark:block">
+                <span class="text-lg font-bold text-black dark:text-white">Tailstart</span>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <!-- Navbar menu -->
+                <ul id="navbarMenu" class="fixed top-0 left-0 z-20 flex-col hidden w-screen h-screen gap-4 p-4 overflow-y-auto bg-white sm:p-0 sm:static dark:bg-neutral-800 sm:bg-transparent dark:sm:bg-transparent sm:h-full sm:w-auto sm:flex-row sm:overflow-none sm:gap-8 sm:flex sm:z-auto">
+                    <!-- Navbar menu toggle (hide) -->
+                    <button type="button" id="navbarMenuToggle" class="absolute right-4 top-4 sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M18 6l-12 12" />
+                            <path d="M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <li>
+                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Docs</a>
+                    </li>
+                    <li>
+                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Showcases</a>
+                    </li>
+                    <li>
+                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Support</a>
+                    </li>
+                </ul>
+
+                <!-- Navbar items divider -->
+                <div class="hidden w-px h-8 mx-4 sm:block bg-neutral-300 dark:bg-neutral-700"></div>
+
+                <div class="flex items-center gap-4">
+                    <!-- Dark mode toggle -->
+                    <button type="button" id="darkModeToggle" aria-label="Dark mode toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-black fill-black" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 stroke-white dark:block fill-white" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                        </svg>
+                    </button>
+
+                    <!-- Github -->
+                    <a href="https://github.com/mkfizi/tailstart-website" target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white fill-black dark:fill-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                        </svg>
+                    </a>
+
+                    <!-- Navbar menu toggle (show) -->
+                    <button type="button" id="navbarMenuToggle" class="sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="w-full max-w-screen-xl px-4 py-32 mx-auto sm:px-8">
+        <header class="py-16">
+            <div class="grid gap-16 lg:grid-cols-2">
+                <div class="col-span-1">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl font-black text-black sm:text-5xl lg:text-6xl dark:text-white"><span class="text-neutral-600 dark:text-neutral-400">Build the ultimate</span> digital product</h1>
+                        <h2 class="mt-4 text-lg text-black sm:text-xl lg:text-2xl dark:text-white">Quickstart TailwindCSS project with multipurpose boilerplates for any type of web developments.</h2>
+                    </div>
+                    <div class="flex justify-center gap-4 mt-8 text-center lg:justify-start lg:text-left">
+                        <a href="https://github.com/mkfizi/tailstart-website" target="_blank" class="px-8 py-2 font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600">Get Started</a>
+                        <a href="#features" class="px-8 py-2 font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600 disabled:opacity-50 disabled:pointer-events-none">Features</a>
+                    </div>
+                </div>
+                <div class="col-span-1">
+                    <img src="./src/images/hero-mobile.png" alt="" class="w-full h-auto rounded-md sm:hidden dark:hidden">
+                    <img src="./src/images/hero-mobile-dark.png" alt="" class="hidden w-full h-auto rounded-md sm:hidden dark:block sm:dark:hidden">
+                    <img src="./src/images/hero.png" alt="" class="hidden w-full h-auto rounded-md sm:block sm:dark:hidden">
+                    <img src="./src/images/hero-dark.png" alt="" class="hidden w-full h-auto rounded-md sm:dark:block">
+                </div>
+            </div>
+        </header>
+
+        <section id="features" class="pt-32">
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Features</h3>
+                <p class="mt-2 text-lg font-medium text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Empower and accelerate development workflow</p>
+            </div>
+            <div class="grid max-w-screen-lg gap-8 mx-auto mt-16 sm:gap-16 sm:grid-cols-2">
+                <div class="flex gap-8">
+                    <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4h6v8h-6z" />
+                            <path d="M4 16h6v4h-6z" />
+                            <path d="M14 12h6v8h-6z" />
+                            <path d="M14 4h6v4h-6z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Versatile Boilerplates</p>
+                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Flexible and comprehensive starting point boilerplates for all web development needs.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8">
+                    <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" />
+                            <path d="M12 12l8 -4.5" />
+                            <path d="M12 12l0 9" />
+                            <path d="M12 12l-8 -4.5" />
+                          </svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Integrated Scalability</p>
+                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Seamless integration with popular frameworks, libraries and technologies.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8">
+                    <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z" />
+                            <path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9" />
+                            <path d="M16 9h2" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Responsive Design</p>
+                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Optimized mobile first approach design to adapt layout with different screen sizes.</p>
+                    </div>
+                </div>
+                <div class="flex gap-8">
+                    <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 4h6v6h-6z" />
+                            <path d="M14 4h6v6h-6z" />
+                            <path d="M4 14h6v6h-6z" />
+                            <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Extensive Components</p>
+                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Predesigned and customizable components library for rapid UI development.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricings" class="pt-32">
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Pricings</h3>
+                <p class="mt-2 text-lg font-medium text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Multiple plans for multiple needs</p>
+            </div>
+            <div class="grid gap-8 mx-auto mt-16 sm:grid-cols-4 lg:grid-cols-6">
+                <div class="order-1 p-8 border-2 rounded-md border-neutral-300 dark:border-neutral-700 sm:col-span-2">
+                    <div>
+                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Personal</span>
+                    </div>
+                    <p class="mt-2 text-2xl font-bold text-black sm:text-3xl lg:text-4xl dark:text-white">FREE</p>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">1 website license</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Basic plugins</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Standard analytic tracking</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Limited support</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Credit to author is required</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600">Get Access</a>
+                </div>
+                <div class="order-2 p-8 border-2 border-black rounded-md dark:border-white sm:col-span-2 sm:order-3 lg:order-2 sm:col-start-2 lg:col-start-auto">
+                    <div>
+                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Teams</span>
+                    </div>
+                    <p class="mt-2 text-2xl font-bold text-black sm:text-3xl lg:text-4xl dark:text-white">$99</p>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">10 websites license</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Advance plugins</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Advance analytic tracking</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Email and call support</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">No credit to author is required</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600">Get Access</a>
+                </div>
+                <div class="order-3 p-8 border-2 rounded-md border-neutral-300 dark:border-neutral-700 sm:col-span-2 sm:order-2 lg:order-3">
+                    <div>
+                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Business</span>
+                    </div>
+                    <p class="mt-2 text-2xl font-bold text-black sm:text-3xl lg:text-4xl dark:text-white">$199</p>
+                    <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Unlimited websites license</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Custom plugins</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Specialized analytic tracking</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Priority support</p>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-neutral-700 dark:fill-neutral-300" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
+                              </svg>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Showcase project</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600">Get Access</a>
+                </div>
+            </div>
+        </section> 
+        <section class="pt-32 text-center">
+            <h3 class="text-2xl font-bold text-black sm:text-3xl lg:text-4xl dark:text-white">Require answers before getting comfortable?</h3>
+            <a href="#" class="inline-block px-8 py-2 mt-8 font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-700 dark:hover:border-neutral-600 dark:hover:bg-neutral-600">Contact Support</a>
+
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="absolute bottom-0 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 pb-px transform -translate-x-1/2 sm:flex-row left-1/2 sm:px-8">
+        <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footerAppName"></span> v<span id="footerAppVersion"></span></p>
+        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footerCurrentYear"></span> © Crafted by <a href="https://mkfizi.dev" target="_blank" class="inline-block text-black dark:text-white">mkfizi</a></span>
+    </footer>
+</body>
+</html>
