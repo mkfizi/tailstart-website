@@ -1,5 +1,5 @@
 # Tailstart - Website
-TailwindCSS website boilerplate for landing page site.
+TailwindCSS website boilerplate for landing page sites.
 
 ## Features
 * Dark mode toggle.
