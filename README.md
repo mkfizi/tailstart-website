@@ -1,5 +1,5 @@
 # Tailstart - Website
-TailwindCSS website boilerplate for quickly starting web development projects.
+TailwindCSS website boilerplate for landing page site.
 
 ## Features
 * Dark mode toggle.
