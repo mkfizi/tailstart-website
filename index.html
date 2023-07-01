@@ -75,9 +75,9 @@
 
             <div class="flex items-center gap-4">
                 <!-- Navbar menu -->
-                <ul id="navbarMenu" class="fixed top-0 left-0 z-20 flex-col hidden w-screen h-screen gap-4 p-4 overflow-y-auto bg-white sm:p-0 sm:static dark:bg-neutral-800 sm:bg-transparent dark:sm:bg-transparent sm:h-full sm:w-auto sm:flex-row sm:overflow-none sm:gap-8 sm:flex sm:z-auto">
+                <ul id="navbar-menu" class="fixed top-0 left-0 z-20 flex-col hidden w-screen h-screen gap-4 p-4 overflow-y-auto bg-white sm:p-0 sm:static dark:bg-neutral-800 sm:bg-transparent dark:sm:bg-transparent sm:h-full sm:w-auto sm:flex-row sm:overflow-none sm:gap-8 sm:flex sm:z-auto">
                     <!-- Navbar menu toggle (hide) -->
-                    <button type="button" id="navbarMenuToggle" class="absolute right-4 top-4 sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                    <button type="button" id="navbar-menu-toggle" class="absolute right-4 top-4 sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M18 6l-12 12" />
@@ -100,7 +100,7 @@
 
                 <div class="flex items-center gap-4">
                     <!-- Dark mode toggle -->
-                    <button type="button" id="darkModeToggle" aria-label="Dark mode toggle">
+                    <button type="button" id="dark-mode-toggle" aria-label="Dark mode toggle">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-black fill-black" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="12" cy="12" r="4" />
@@ -121,7 +121,7 @@
                     </a>
 
                     <!-- Navbar menu toggle (show) -->
-                    <button type="button" id="navbarMenuToggle" class="sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
+                    <button type="button" id="navbar-menu-toggle" class="sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                             <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
@@ -371,8 +371,8 @@
     
     <!-- Footer -->
     <footer class="absolute bottom-0 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 pb-px transform -translate-x-1/2 sm:flex-row left-1/2 sm:px-8">
-        <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footerAppName"></span> v<span id="footerAppVersion"></span></p>
-        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footerCurrentYear"></span> © Crafted by <a href="https://mkfizi.dev" target="_blank" class="inline-block text-black dark:text-white">mkfizi</a></span>
+        <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
+        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-current-year"></span> © Crafted by <a href="https://mkfizi.dev" target="_blank" class="inline-block text-black dark:text-white">mkfizi</a></span>
     </footer>
 </body>
 </html>

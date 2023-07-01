@@ -14,12 +14,12 @@ let app = {
 
 app.elements = {
     navbar: document.getElementById('navbar'),
-    navbarMenu: document.getElementById('navbarMenu'),
-    darkModeToggle: document.getElementById('darkModeToggle'),
-    navbarMenuToggle: document.getElementById('navbarMenuToggle'),
-    footerCurrentYear: document.getElementById('footerCurrentYear'),
-    footerAppName: document.getElementById('footerAppName'),
-    footerAppVersion: document.getElementById('footerAppVersion'),
+    navbarMenu: document.getElementById('navbar-menu'),
+    darkModeToggle: document.getElementById('dark-mode-toggle'),
+    navbarMenuToggle: document.getElementById('navbar-menu-toggle'),
+    footerCurrentYear: document.getElementById('footer-current-year'),
+    footerAppName: document.getElementById('footer-app-name'),
+    footerAppVersion: document.getElementById('footer-app-version'),
 };
 
 app.config = {
@@ -42,9 +42,9 @@ app.event = {
     handleDocumentClick: event => {
         const target = event.target;
 
-        if (target.closest('[id="darkModeToggle"]')) {
+        if (target.closest('[id="dark-mode-toggle"]')) {
             app.view.updateDarkMode();
-        } else if (target.closest('[id="navbarMenuToggle"]')) {
+        } else if (target.closest('[id="navbar-menu-toggle"]')) {
             app.view.toggleNavbarMenu();
         }
     },
