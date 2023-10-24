@@ -1,5 +1,5 @@
-# Tailstart Kit - Website
-TailwindCSS website starter kit for landing page sites.
+# Tailstart - Website
+TailwindCSS website starter kit.
 
 ## Features
 * Dark mode toggle: Users can switch between light and dark modes for better readability and preference.
