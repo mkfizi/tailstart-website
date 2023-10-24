@@ -1,226 +1,246 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart - Website v0.1.0: app.js
+ * Tailstart - Website v0.2.0: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-website/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-'use strict';
+(function () {
+    'use strict';
 
-let app = {
-    name: 'Tailstart - Website',
-    version: '0.1.0',
-};
+    const app = {};
 
-app.elements = {
-    navbar: document.getElementById('navbar'),
-    navbarMenu: document.getElementById('navbar-menu'),
-    darkModeToggle: document.getElementById('dark-mode-toggle'),
-    navbarMenuToggle: document.getElementById('navbar-menu-toggle'),
-    footerCurrentYear: document.getElementById('footer-current-year'),
-    footerAppName: document.getElementById('footer-app-name'),
-    footerAppVersion: document.getElementById('footer-app-version'),
-};
+    app.name = 'Tailstart - Website';
+    app.version = '0.2.0';
 
-app.config = {
-    isMenuActive: false,
-    breakpointSize: 640
-}
-
-app.init = () => {
-    app.view.init();
-    app.event.init();
-};
-
-app.event = {
-    init: () => {
-        document.addEventListener('click', app.event.handleDocumentClick);
-        window.addEventListener('resize', app.event.handleWindowResize);
-        window.addEventListener('scroll', app.event.handleWindowScroll);
-    },
-
-    handleDocumentClick: event => {
-        const target = event.target;
-
-        if (target.closest('[id="dark-mode-toggle"]')) {
-            app.view.updateDarkMode();
-        } else if (target.closest('[id="navbar-menu-toggle"]')) {
-            app.view.toggleNavbarMenu();
-        }
-    },
-
-    handleWindowResize: () => {
-        app.view.updateViewportHeight();
-        app.view.updateNavbarMenu();
-    },
-
-    handleWindowScroll: () => {
-        app.view.updateNavbar();
+    app.element = {
+        navbar: document.getElementById('navbar'),
+        navbarMenu: document.getElementById('navbar-menu'),
+        navbarMenuToggle: document.getElementById('navbar-menu-toggle'),
+        navbarMenuClose: document.getElementById('navbar-menu-close'),
+        darkModeToggle: document.getElementById('dark-mode-toggle'),
+        sections: document.querySelectorAll('section'),
+        footerCurrentYear: document.getElementById('footer-year'),
+        footerAppName: document.getElementById('footer-app-name'),
+        footerAppVersion: document.getElementById('footer-app-version'),
     }
-};
 
-app.view = {
-    init: () => {
-        app.view.updateViewportHeight();
-        app.view.updateAppInfo();
-    },
+    app.view = {
+        viewportHeight: {
 
-    // Update the height of the viewport. This is a workaround fix for [viewport height issue on mobile browsers](https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser) 
-    updateViewportHeight: () => {
-        document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
-    },
-
-    // Update navbar appearance based on window scroll position
-    updateNavbar: () => {
-        if (!app.elements.navbar) return;
-
-        const isNavbarScrolled = window.pageYOffset > (app.elements.navbar.offsetHeight - app.elements.navbar.clientHeight);
-
-        app.elements.navbar.classList.toggle('border-neutral-200', isNavbarScrolled);
-        app.elements.navbar.classList.toggle('dark:border-neutral-800', isNavbarScrolled);
-        app.elements.navbar.classList.toggle('border-transparent', !isNavbarScrolled);
-        app.elements.navbar.classList.toggle('dark:border-transparent', !isNavbarScrolled);
-    },
-
-    // Update dark mode based on value in 'localStorage.theme'
-    updateDarkMode: () => {
-        app.util.toggleTransition();
-
-        const isLightMode = localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
-        localStorage.theme = isLightMode ? 'dark' : 'light';
-        document.documentElement.classList.toggle('dark', isLightMode);
-    },
-
-    // Update the footer with current year, app name, and version
-    updateAppInfo: () => {
-        if (app.elements.footerCurrentYear) {
-            app.elements.footerCurrentYear.innerHTML = new Date().getFullYear();
-        }
-
-        if (app.elements.footerAppName) {
-            app.elements.footerAppName.innerHTML = app.name;
-        }
-
-        if (app.elements.footerAppVersion) {
-            app.elements.footerAppVersion.innerHTML = app.version;
-        }
-    },
-
-    // Toggle the navbar menu visibility and update related elements
-    toggleNavbarMenu: () => {
-        app.util.toggleTransitionAll(app.elements.navbarMenu);
-
-        app.elements.navbarMenu.classList.toggle('hidden', app.config.isNavbarMenuActive);
-        app.elements.navbarMenu.classList.toggle('flex', !app.config.isNavbarMenuActive);
-        app.util.focusable[app.config.isNavbarMenuActive ? 'disable' : 'enable'](app.elements.navbarMenu);
-        app.util.static[app.config.isNavbarMenuActive ? 'disable' : 'enable']();
-        app.util.focusTrap[app.config.isNavbarMenuActive ? 'disable' : 'enable'](app.elements.navbarMenu);
-      
-        app.elements.navbarMenuToggle.setAttribute('aria-expanded', !app.config.isNavbarMenuActive);
-        app.config.isNavbarMenuActive = !app.config.isNavbarMenuActive;
-    },
-
-    // Update navbar menu to handle state when switching pass breakpoint size
-    updateNavbarMenu: () => {
-        if (window.innerWidth >= app.config.breakpointSize && app.config.isNavbarMenuActive) {
-            app.view.toggleNavbarMenu();
-        }
-    }
-};
-
-app.util = {
-    static: {
-        enable: () => {
-            document.getElementsByTagName("BODY")[0].classList.add('overflow-hidden');
-        },
-
-        disable: () => {
-            document.getElementsByTagName("BODY")[0].classList.remove('overflow-hidden');
-        }
-    },
-
-    focusable: {
-        selector: `a, button, input, textarea, select, details, [contenteditable="true"]`,
-
-        // Enable focus on the specified element and its focusable child elements
-        enable: element => {
-            for (const focusableElement of element.querySelectorAll(app.util.focusable.selector)) {
-                focusableElement.classList.remove("invisible");
+            // Workaround fix to handle viewport height issue on mobile browsers
+            // https://stackoverflow.com/questions/37112218/css3-100vh-not-constant-in-mobile-browser
+            toggle: () => {
+                document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
             }
         },
 
-        // Disable focus on the specified element and its focusable child elements
-        disable: element => {
-            for (const focusableElement of element.querySelectorAll(app.util.focusable.selector)) {
-                focusableElement.classList.add("invisible");
-            }
-        },
-    },
+        footer: {
 
-    focusTrap: {
-        active: {},
-        selector: `a:not([tabindex="-1"]), button:not([tabindex="-1"]), input:not([tabindex="-1"]), textarea:not([tabindex="-1"]), select:not([tabindex="-1"]), details:not([tabindex="-1"]), [tabindex]:not([tabindex="-1"]), [contenteditable="true"]:not([tabindex="-1"])`,
+            // Toggle footer content with current year, app name and version
+            toggle: () => {
+                if (app.element.footerCurrentYear) {
+                    app.element.footerCurrentYear.innerHTML = new Date().getFullYear();
+                }
 
-        // Handle focus trap event
-        handleEvent: (event, element) => {
-            const focusableElements = element.querySelectorAll(app.util.focusTrap.selector);
-            const firstElement = focusableElements[0];
-            const lastElement = focusableElements[focusableElements.length - 1];
-        
-            if (event.type === "keydown" && event.keyCode === 9) {
-                if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
-                    event.preventDefault();
-                    lastElement.focus();
+                if (app.element.footerAppName) {
+                    app.element.footerAppName.innerHTML = app.name;
+                }
 
-                } else if (!event.shiftKey && document.activeElement === lastElement) {
-                    event.preventDefault();
-                    firstElement.focus();
+                if (app.element.footerAppVersion) {
+                    app.element.footerAppVersion.innerHTML = app.version;
                 }
             }
         },
 
-        // Enable focus trap on specified element
-        enable: element => {
-            const id = element.getAttribute("id");
-            app.util.focusTrap.active[id] = event => app.util.focusTrap.handleEvent(event, element)
-            window.addEventListener("keydown", app.util.focusTrap.active[id]);
-            setTimeout(function() { 
-                element.setAttribute("tabindex", 0);
-                element.focus();
-            }, 50);
+        darkMode: {
 
-            setTimeout(function() { 
-                element.removeAttribute("tabindex"); 
-                element.blur();
-            }, 100);
+            // Toggle dark mode
+            toggle: () => {
+                const isDarkMode = localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches);
+                localStorage.theme = isDarkMode ? 'dark' : 'light';
+                document.documentElement.classList.toggle('dark', isDarkMode);
+            }
         },
 
-        // Disable focus trap on specified element
-        disable: element => {
-            const id = element.getAttribute("id");
-            window.removeEventListener("keydown", app.util.focusTrap.active[id]);
-            app.util.focusTrap.active[id] = null;
-        }
-    },
+        navbar: {
 
-    // Toggle CSS transitions for smoother element transitions
-    toggleTransition: () => {
-        const transitions = document.querySelectorAll('.transition, .transition-all, .transition-colors, .transition-opacity, .transition-shadow, .transition-transform');
-        for (const transition of transitions) {
-            transition.classList.add('transition-none');
-            setTimeout(() => {
-                transition.classList.remove('transition-none');
-            }, 150);
-        }
-    },
+            // Update navbar appearance base on window scroll Y position
+            toggle: () => {
+                if (app.element.navbar) {
+                    const isScrolled = window.scrollY > (app.element.navbar.offsetHeight - app.element.navbar.clientHeight);
+                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800');
+                    app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
+                }
+            },
 
-    // Toggle CSS transition on the specified element
-    toggleTransitionAll: element => {
-        element.classList.add('transition-all');
-        setTimeout(() => {
-            element.classList.remove('transition-all'); 
-        }, 150);
+            menu: {
+            
+                // Toggle menu
+                toggle: (targetElement, isOpen = null) => {
+                    if (isOpen == null) isOpen = (targetElement.getAttribute('aria-hidden') === 'true');
+                    targetElement.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
+                    targetElement.setAttribute('aria-hidden', !isOpen);
+
+                    // Set toggle element `[aria-expanded]` attribute value
+                    document.querySelectorAll(`[aria-controls="${targetElement.id}"]`).forEach((currentToggleElement) => {
+                        currentToggleElement.setAttribute('aria-expanded', isOpen);
+                    });
+
+                    if (isOpen) {
+
+                        // Force focus for focus trap
+                        targetElement.setAttribute('tabindex', 1);
+                        targetElement.focus();
+                        setTimeout(() => {
+                            targetElement.removeAttribute('tabindex');
+                        }, 100);
+
+                        if (!app.view.navbar.menu[targetElement.id]) {
+
+                            // Create new menu object instance
+                            app.view.navbar.menu[targetElement.id] = {
+                                clickOutside: (event) => app.view.navbar.menu.clickOutsideHandler(targetElement, event),
+                                escape: (event) => app.view.navbar.menu.escapeHandler(targetElement, event),
+                                focusTrap: (event) => app.view.navbar.menu.focusTrapHandler(targetElement, event),
+                            };
+
+                            // Add event listeners to menu object instance
+                            document.addEventListener('click', app.view.navbar.menu[targetElement.id].clickOutside);
+                            window.addEventListener('keydown', app.view.navbar.menu[targetElement.id].escape);
+                            window.addEventListener('keydown', app.view.navbar.menu[targetElement.id].focusTrap);
+                        }
+                    } else if (app.view.navbar.menu[targetElement.id]) {
+
+                        // Remove event listeners to menu object instance
+                        document.removeEventListener('click', app.view.navbar.menu[targetElement.id].clickOutside);
+                        window.removeEventListener('keydown', app.view.navbar.menu[targetElement.id].escape);
+                        window.removeEventListener('keydown', app.view.navbar.menu[targetElement.id].focusTrap);
+
+                        // Delete menu object instance
+                        delete app.view.navbar.menu[targetElement.id];
+                    }
+                },
+
+                // Toggle active navigation link
+                toggleActiveLink: () => {
+                    const scrollPosition = window.scrollY;
+                    app.element.sections.forEach((targetSection) => {
+                        const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
+                        const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
+
+                        let isActive = false;
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                            isActive = true;
+                        }
+
+                        const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
+                        if (targetLink) {
+                            targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
+                            targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                            if (!targetLink.classList.contains('font-semibold')) {
+                                targetLink.classList[isActive ? 'add' : 'remove']('font-medium');
+                            }
+                        }
+                    });
+                },
+
+                // Click outside handler
+                clickOutsideHandler: (targetElement, event) => {
+                    if (!event.target.closest(`[aria-labelledby="${targetElement.id}"]`) && !event.target.closest(`[aria-controls="${targetElement.id}"]`)) {
+                        app.view.navbar.menu.toggle(targetElement, false);
+                    }
+                },
+
+                // Escape key handler
+                escapeHandler: (targetElement, event) => {
+                    if (event.key === 'Escape') {
+                        app.view.navbar.menu.toggle(targetElement, false);
+                    }
+                },
+
+                // Focus trap handler
+                focusTrapHandler: (targetElement, event) => {
+                    if (event.key === 'Tab') {
+                        const focusableElements = Array.from(targetElement.querySelectorAll('a, button, input, textarea, select, details, [tabindex], [contenteditable="true"]')).filter(currentElement => {
+                            return !currentElement.closest('[tabindex="-1"], .hidden, .invisible') || null;
+                        });
+                        const firstElement = focusableElements[0];
+                        const lastElement = focusableElements[focusableElements.length - 1];
+
+                        if (event.shiftKey && (document.activeElement === firstElement || document.activeElement === document.body)) {
+                            event.preventDefault();
+                            lastElement.focus();
+                        } else if (!event.shiftKey && document.activeElement === lastElement) {
+                            event.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+            }
+        },
+
+        // Initialize view
+        init: () => {
+            app.view.viewportHeight.toggle();
+            app.view.footer.toggle();
+        }
     }
-};
 
-app.init();
+    app.event = {
+        document: {
+
+            /**
+             * Handle 'click' event
+             * 
+             * Attach global 'click' event on document instead of attaching multiple 'click' event
+             * listener on every target elements to reduce multiple event listeners.
+             */
+            click: event => {
+                const targetElement = event.target.closest('[id]');
+                if (targetElement) {
+
+                    // Switch case on `app.element` objects.
+                    switch (targetElement.id) {
+                        case app.element.darkModeToggle?.id:
+                            app.view.darkMode.toggle();
+                            break;
+                        case app.element.navbarMenuToggle?.id:
+                            app.view.navbar.menu.toggle(app.element.navbarMenu);
+                            break;
+                        case app.element.navbarMenuClose?.id:
+                            app.view.navbar.menu.toggle(app.element.navbarMenu, false);
+                            break;
+                    }
+                }
+            }
+        },
+
+        window: {
+            
+            // Handle window 'resize' event
+            resize: () => {
+                app.view.viewportHeight.toggle();
+            },
+
+            // Handle window 'scroll' event
+            scroll: () => {
+                app.view.navbar.toggle();
+                app.view.navbar.menu.toggleActiveLink();
+            }
+        },
+
+        init: () => {
+            document.addEventListener('click', app.event.document.click);
+            window.addEventListener('resize', app.event.window.resize);
+            window.addEventListener('scroll', app.event.window.scroll);
+        }
+    },
+
+    app.init = () => {
+        app.view.init();
+        app.event.init();
+    }
+
+    app.init();
+})();

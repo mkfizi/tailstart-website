@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <!-- Metadata -->
     <meta charset="UTF-8">
@@ -9,25 +9,25 @@
 
     <!-- SEO -->
     <meta name="title" content="Tailstart">
-    <meta name="description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components.">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits.">
     <meta name="robots" content="index, follow">
  
-     <!-- Facebook open graph -->
-     <meta property="og:url" content="https://mkfizi.dev/tailstart">
-     <meta property="og:type" content="website">
-     <meta property="og:title" content="Tailstart">
-     <meta property="og:image" content="https://https://mkfizi.dev/tailstart/src/images/fb-og.jpg">
-     <meta property="og:description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components.">
-     <meta property="og:site_name" content="Tailstart">
- 
-     <!-- Twitter cards -->
-     <meta name="twitter:card" content="summary">
-     <meta name="twitter:site" content="@mkfizi">
-     <meta name="twitter:creator" content="@mkfizi">
-     <meta name="twitter:url" content="https://mkfizi.dev/tailstart">
-     <meta name="twitter:title" content="Tailstart">
-     <meta name="twitter:description" content="A multipurpose handcrafted collection of TailwindCSS boilerplates, style guideline, and components.">
-     <meta name="twitter:image" content="https://https://mkfizi.dev/tailstart/src/images/tw-card.jpg">
+    <!-- Facebook open graph -->
+    <meta property="og:url" content="https://mkfizi.dev/tailstart">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tailstart">
+    <meta property="og:image" content="https://mkfizi.dev/tailstart/src/images/fb-og.jpg">
+    <meta name="description" content="TailwindCSS library of multipurpose starter kits.">
+    <meta property="og:site_name" content="Tailstart">
+
+    <!-- Twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@mkfizi">
+    <meta name="twitter:creator" content="@mkfizi">
+    <meta name="twitter:url" content="https://mkfizi.dev/tailstart">
+    <meta name="twitter:title" content="Tailstart">
+    <meta name="twitter:description" content="TailwindCSS library of multipurpose starter kits.">
+    <meta name="twitter:image" content="https://mkfizi.dev/tailstart/src/images/tw-card.jpg">
 
     <!-- Favicon -->
     <link rel="manifest" href="./site.webmanifest">
@@ -39,10 +39,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="./src/css/app.css">
-    <link rel="preload" as="font">
+    <link rel="preload" href="./src/css/app.css" as="style">
 
     <!-- Scripts -->
     <script src="./src/js/app.js" defer></script>
+    <link rel="preload" href="./src/js/app.js" as="script">
 
     <!-- 
         Handle dark mode toggle when the page is loaded.
@@ -63,103 +64,107 @@
     <title>Tailstart | Website</title>
 </head>
 <body class="relative min-h-screen antialiased bg-white dark:bg-neutral-900">
+
     <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 z-10 w-full h-16 bg-white border-b border-transparent dark:bg-neutral-900 dark:border-transparent">
-        <div class="flex items-center justify-between w-full h-full max-w-screen-xl px-4 mx-auto sm:px-8">
-            <!-- Logo -->
-            <a href="./" class="flex gap-4">
-                <img src="./src/images/logo.png" alt="Tailstart Logo" class="w-6 h-6 dark:hidden">
-                <img src="./src/images/logo-dark.png" alt="Tailstart Logo" class="hidden w-6 h-6 dark:block">
-                <span class="text-lg font-bold text-black dark:text-white">Tailstart</span>
-            </a>
+    <nav id="navbar" class="sticky top-0 z-10 w-full h-16 bg-white border-b border-transparent dark:border-transparent dark:bg-neutral-900">
+        <div class="divide-y divide-neutral-200 dark:divide-neutral-800">
+            <div class="flex items-center justify-between w-full h-16 max-w-screen-xl px-4 mx-auto sm:px-8">
 
-            <div class="flex items-center gap-4">
-                <!-- Navbar menu -->
-                <ul id="navbar-menu" class="fixed top-0 left-0 z-20 flex-col hidden w-screen h-screen gap-4 p-4 overflow-y-auto bg-white sm:p-0 sm:static dark:bg-neutral-800 sm:bg-transparent dark:sm:bg-transparent sm:h-full sm:w-auto sm:flex-row sm:overflow-none sm:gap-8 sm:flex sm:z-auto">
-                    <!-- Navbar menu toggle (hide) -->
-                    <button type="button" id="navbar-menu-toggle" class="absolute right-4 top-4 sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M18 6l-12 12" />
-                            <path d="M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <li>
-                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Docs</a>
-                    </li>
-                    <li>
-                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Showcases</a>
-                    </li>
-                    <li>
-                        <a href="#" class="invisible text-base font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white sm:visible">Support</a>
-                    </li>
-                </ul>
-
-                <!-- Navbar items divider -->
-                <div class="hidden w-px h-8 mx-4 sm:block bg-neutral-300 dark:bg-neutral-700"></div>
-
+                <!-- Logo -->
+                <a href="#" class="flex gap-4">
+                    <img src="./src/images/logo.png" alt="Tailstart Kit Logo" class="w-6 h-6 dark:hidden">
+                    <img src="./src/images/logo-dark.png" alt="Tailstart Kit Logo" class="hidden w-6 h-6 dark:block">
+                    <span class="text-lg font-bold text-black dark:text-white">Tailstart</span>
+                </a>
+    
                 <div class="flex items-center gap-4">
-                    <!-- Dark mode toggle -->
-                    <button type="button" id="dark-mode-toggle" aria-label="Dark mode toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-black fill-black" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <circle cx="12" cy="12" r="4" />
-                            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 stroke-white dark:block fill-white" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-                        </svg>
-                    </button>
 
-                    <!-- Github -->
-                    <a href="https://github.com/mkfizi/tailstart-website" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white fill-black dark:fill-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
-                        </svg>
-                    </a>
-
-                    <!-- Navbar menu toggle (show) -->
-                    <button type="button" id="navbar-menu-toggle" class="sm:hidden" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navbar menu">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                            <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-                        </svg>
-                    </button>
+                    <!-- Navbar menu -->
+                    <div id="navbar-menu" class="fixed top-0 left-0 z-20 invisible hidden w-screen h-screen lg:block lg:visible bg-neutral-500/50 lg:bg-transparent lg:relative lg:w-auto lg:h-auto lg:left-auto lg:top-auto lg:z-0" aria-hidden="true">
+                        <div class="fixed top-0 left-0 w-full h-full p-4 overflow-y-auto bg-white lg:relative lg:h-auto lg:p-0 dark:bg-neutral-800 drop-shadow-md lg:bg-transparent lg:dark:bg-transparent lg:w-auto" aria-labelledby="navbar-menu">
+                            <button id="navbar-menu-close" type="button" class="absolute lg:hidden right-4 top-4 group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Close navbar menu">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M18 6l-12 12" />
+                                    <path d="M6 6l12 12" />
+                                </svg>
+                            </button>
+                            <ul class="space-y-4 lg:space-y-0 lg:flex lg:gap-8">
+                                <li>
+                                    <a href="#features" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Features</a>
+                                </li>
+                                <li>
+                                    <a href="#pricings" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Pricings</a>
+                                </li>
+                                <li>
+                                    <a href="#contact" class="block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Divider -->
+                    <div class="hidden w-px h-8 mx-4 lg:block bg-neutral-300 dark:bg-neutral-700"></div>
+                    
+                    <div class="flex items-center gap-4">
+    
+                        <!-- Dark mode toggle button -->
+                        <button id="dark-mode-toggle" type="button" class="group" aria-label="Toggle dark mode">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 dark:hidden stroke-neutral-600 group-hover:stroke-black" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+                                <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 h-6 dark:block dark:stroke-neutral-400 group-hover:stroke-white" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+                            </svg>
+                        </button>
+                        <a href="https://github.com/mkfizi/tailstart-website" target="_blank" class="group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                            </svg>
+                        </a>
+    
+                        <!-- Navbar menu toggle button -->
+                        <button id="navbar-menu-toggle" type="button" class="lg:hidden group" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navbar menu">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-neutral-600 dark:stroke-neutral-400 group-hover:stroke-black dark:group-hover:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Content -->
-    <main class="w-full max-w-screen-xl px-4 py-32 mx-auto sm:px-8">
-        <header class="sm:py-16">
-            <div class="grid gap-16 lg:grid-cols-2">
-                <div class="col-span-1">
-                    <div class="text-center lg:text-left">
-                        <h1 class="text-4xl font-black text-black sm:text-5xl lg:text-6xl dark:text-white"><span class="text-neutral-600 dark:text-neutral-400">Build the ultimate</span> digital product</h1>
-                        <h2 class="mt-4 text-lg text-black sm:text-xl lg:text-2xl dark:text-white">Quickstart TailwindCSS project with multipurpose boilerplates for any type of web developments.</h2>
-                    </div>
-                    <div class="flex justify-center gap-4 mt-8 text-center lg:justify-start lg:text-left">
-                        <a href="https://github.com/mkfizi/tailstart-website" target="_blank" class="px-8 py-2 font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Started</a>
-                        <a href="#features" class="px-8 py-2 font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500 disabled:opacity-50 disabled:pointer-events-none">Features</a>
-                    </div>
-                </div>
-                <div class="col-span-1">
-                    <img src="./src/images/hero.jpg" alt="Tailstart image" class="w-full h-auto rounded-xl">
+    <main class="w-full max-w-screen-xl px-4 pt-16 pb-32 mx-auto sm:px-8">
+
+        <!-- Header section -->
+        <header class="grid gap-16 py-16 lg:grid-cols-2">
+            <div class="flex flex-col justify-center text-center lg:text-left">
+                <h1 class="text-4xl font-black text-black sm:text-5xl lg:text-6xl dark:text-white"><span class="text-neutral-600 dark:text-neutral-400">Streamline</span> Project Development.</h1>
+                <h2 class="mt-4 text-lg text-black sm:text-xl lg:text-2xl dark:text-white">Get a head start on your web projects with <span class="font-bold text-neutral-600 dark:text-neutral-400">Tailstart</span> collection of starter kits.</h2>
+                <div class="flex justify-center gap-2 mt-8 lg:justify-start">
+                    <a href="#features" class="inline-block px-4 py-2 text-base font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Learn More</a>
+                    <a href="#contact" class="inline-block px-4 py-2 space-x-1 text-base font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Contact Us</a>
                 </div>
             </div>
+            <img src="./src/images/header.jpg" alt="" class="object-cover w-full rounded-xl h-96">
         </header>
-
-        <section id="features" class="pt-32">
+        
+        <!-- Features section -->
+        <section id="features" class="max-w-screen-lg pt-32 mx-auto ">
             <div class="text-center">
                 <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Features</h3>
-                <p class="mt-2 text-lg font-medium text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Empower and accelerate development workflow</p>
+                <p class="mt-2 text-lg text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Empower and accelerate development workflow.</p>
             </div>
-            <div class="grid max-w-screen-lg gap-8 mx-auto mt-16 sm:gap-16 sm:grid-cols-2">
+            <div class="grid gap-8 mt-16 sm:gap-16 sm:grid-cols-2">
                 <div class="flex gap-8">
                     <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -208,29 +213,29 @@
                     <div class="self-start p-4 rounded-full bg-neutral-200 dark:bg-neutral-700">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-black dark:stroke-white" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-                            <path d="M4 4h6v6h-6z" />
-                            <path d="M14 4h6v6h-6z" />
-                            <path d="M4 14h6v6h-6z" />
-                            <path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                        </svg>
+                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                            <path d="M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1" />
+                            <circle cx="12" cy="7.5" r=".5" fill="currentColor" />
+                          </svg>
                     </div>
                     <div>
-                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Extensive Components</p>
-                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Predesigned and customizable components library for rapid UI development.</p>
+                        <p class="text-base font-bold text-black sm:text-lg lg:text-xl dark:text-white">Accessibility Compliant</p>
+                        <p class="mt-2 text-base text-neutral-700 dark:text-neutral-300">Web content meet accessiblity standards and user friendly for all individuals.</p>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Pricings section -->
         <section id="pricings" class="pt-32">
             <div class="text-center">
                 <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Pricings</h3>
-                <p class="mt-2 text-lg font-medium text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Multiple plans for multiple needs</p>
+                <p class="mt-2 text-lg text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Multiple plans for multiple needs.</p>
             </div>
-            <div class="grid gap-8 mx-auto mt-16 sm:grid-cols-4 lg:grid-cols-6">
+            <div class="grid gap-8 mt-16 sm:grid-cols-4 lg:grid-cols-6">
                 <div class="order-1 p-8 border-2 rounded-xl border-neutral-300 dark:border-neutral-700 sm:col-span-2">
                     <div>
-                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Personal</span>
+                        <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Personal</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">FREE</p>
                     <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
@@ -270,11 +275,11 @@
                             <p class="text-base text-neutral-700 dark:text-neutral-300">Credit to author is required</p>
                         </li>
                     </ul>
-                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
+                    <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
                 <div class="order-2 p-8 border-2 border-black rounded-xl dark:border-white sm:col-span-2 sm:order-3 lg:order-2 sm:col-start-2 lg:col-start-auto">
                     <div>
-                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Teams</span>
+                        <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Teams</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">$99</p>
                     <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
@@ -314,11 +319,11 @@
                             <p class="text-base text-neutral-700 dark:text-neutral-300">No credit to author is required</p>
                         </li>
                     </ul>
-                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
+                    <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
                 <div class="order-3 p-8 border-2 rounded-xl border-neutral-300 dark:border-neutral-700 sm:col-span-2 sm:order-2 lg:order-3">
                     <div>
-                        <span class="px-2 py-1 text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Business</span>
+                        <span class="inline-block px-2 py-px text-sm font-semibold text-black rounded-md dark:text-white bg-neutral-200 dark:bg-neutral-700">Business</span>
                     </div>
                     <p class="mt-2 text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">$199</p>
                     <ul class="mt-4 space-y-2 list-none marker:text-neutral-700 dark:marker:text-neutral-300">
@@ -355,24 +360,65 @@
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M13 3l0 7l6 0l-8 11l0 -7l-6 0l8 -11" />
                               </svg>
-                            <p class="text-base text-neutral-700 dark:text-neutral-300">Showcase project</p>
+                            <p class="text-base text-neutral-700 dark:text-neutral-300">Entitled for showcase</p>
                         </li>
                     </ul>
-                    <a href="#" class="inline-block w-full px-8 py-2 mt-8 font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
+                    <a href="#" class="inline-block w-full px-4 py-2 mt-8 text-base font-semibold text-center text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Get Access</a>
                 </div>
             </div>
         </section> 
-        
-        <section class="pt-32 text-center">
-            <h3 class="text-2xl font-bold text-black sm:text-3xl lg:text-4xl dark:text-white">Require answers before getting comfortable?</h3>
-            <a href="#" class="inline-block px-8 py-2 mt-8 font-semibold text-black bg-transparent border border-black rounded-md dark:text-white hover:border-neutral-700 hover:text-white hover:bg-neutral-700 dark:bg-transparent dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500">Contact Support</a>
+
+        <!-- Contact section -->
+        <section id="contact" class="max-w-screen-sm pt-32 mx-auto ">
+            <div class="text-center">
+                <h3 class="text-2xl font-extrabold text-black sm:text-3xl lg:text-4xl dark:text-white">Contact</h3>
+                <p class="mt-2 text-lg text-neutral-700 sm:text-xl lg:text-2xl dark:text-neutral-300">Require some answers before getting comfortable? Fill in below form and we will contact you as soon as we can.</p>
+            </div>
+            <div class="mt-16">
+                <form action="#" class="grid gap-4 sm:grid-cols-2">
+                    <div class="space-y-2">
+                        <label for="#first-name" class="text-base font-bold text-neutral-700 dark:text-neutral-300">First Name</label>
+                        <input id="first-name" type="text" name="firstName" class="w-full p-2 text-base bg-transparent border rounded-md appearance-none text-neutral-700 dark:text-neutral-300 border-neutral-600 dark:border-neutral-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Input first name">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="#last-name" class="text-base font-bold text-neutral-700 dark:text-neutral-300">Last Name</label>
+                        <input id="last-name" type="text" name="lastName" class="w-full p-2 text-base bg-transparent border rounded-md appearance-none text-neutral-700 dark:text-neutral-300 border-neutral-600 dark:border-neutral-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Input last name">
+                    </div>
+                    <div class="space-y-2 sm:col-span-2">
+                        <label for="#email" class="text-base font-bold text-neutral-700 dark:text-neutral-300">Email Address</label>
+                        <input id="email" type="email" name="email" class="w-full p-2 text-base bg-transparent border rounded-md appearance-none text-neutral-700 dark:text-neutral-300 border-neutral-600 dark:border-neutral-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Input email address">
+                    </div>
+                    <div class="space-y-2 sm:col-span-2">
+                        <label for="#email" class="text-base font-bold text-neutral-700 dark:text-neutral-300">Enquiry Type</label>
+                        <div class="relative">
+                            <select id="enquiry" name="enquiry" class="relative w-full py-2 pl-2 pr-12 text-base bg-transparent border rounded-md appearance-none text-neutral-700 dark:text-neutral-300 border-neutral-600 dark:border-neutral-400 disabled:opacity-50 disabled:pointer-events-none peer">
+                                <option value="" class="dark:bg-transparent" selected>Select Option</option>
+                                <option value="General" class="dark:bg-transparent">General</option>
+                                <option value="Sales" class="dark:bg-transparent">Sales</option>
+                                <option value="Technical" class="dark:bg-transparent">Technical</option>
+                            </select>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="absolute w-6 h-6 top-2 right-2 stroke-neutral-700 dark:stroke-neutral-300 -z-10 peer-disabled:opacity-50" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M6 9l6 6l6 -6" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="space-y-2 sm:col-span-2">
+                        <label for="#message" class="text-base font-bold text-neutral-700 dark:text-neutral-300">Message</label>
+                        <textarea id="message" name="message" class="w-full h-32 p-2 text-base bg-transparent border rounded-md appearance-none text-neutral-700 dark:text-neutral-300 border-neutral-600 dark:border-neutral-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Input message"></textarea>
+                    </div>
+                    <div class="flex justify-center sm:col-span-2">
+                        <button type="submit" class="px-4 py-2 text-base font-semibold text-white bg-black border border-black rounded-md hover:border-neutral-700 hover:bg-neutral-700 dark:bg-neutral-600 dark:border-neutral-600 dark:hover:border-neutral-500 dark:hover:bg-neutral-500 disabled:opacity-50 disabled:pointer-events-none">Submit Form</button>
+                    </div>
+                </form>
+            </div>
         </section>
     </main>
     
     <!-- Footer -->
-    <footer class="absolute bottom-0 flex flex-col items-center justify-between w-full max-w-screen-xl px-4 pb-px transform -translate-x-1/2 sm:flex-row left-1/2 sm:px-8">
+    <footer class="absolute bottom-0 w-full max-w-screen-xl px-4 pb-px text-center transform -translate-x-1/2 left-1/2 sm:px-8">
         <p class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-app-name"></span> v<span id="footer-app-version"></span></p>
-        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-current-year"></span> © Crafted by <a href="https://mkfizi.dev" target="_blank" class="inline-block text-black dark:text-white">mkfizi</a></span>
+        <span class="text-sm text-neutral-700 dark:text-neutral-300"><span id="footer-year"></span> © Developed by <a href="https://mkfizi.dev" target="_blank" class="inline-block font-semibold text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white">mkfizi</a></span>
     </footer>
 </body>
 </html>
