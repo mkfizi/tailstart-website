@@ -16,6 +16,12 @@ Types of changes:
 ## [Unreleased]
 Put unreleased changes here.
 
+## [0.2.0] - 2023-10-25
+### Changed
+* Revise metadata.
+* Revise content.
+
+* First release.
 ## [0.1.0] - 2023-06-30
 ### Added
 * First release.
