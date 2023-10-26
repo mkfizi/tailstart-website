@@ -122,23 +122,14 @@
 
                 // Add event listeners
                 setupEventListeners: () => {
-                    document.addEventListener('click', app.view.navbar.menu.clickOutside);
                     window.addEventListener('keydown', app.view.navbar.menu.escape);
                     window.addEventListener('keydown', app.view.navbar.menu.focusTrap);
                 },
 
                 // Remove event listeners
                 removeEventListeners: () => {
-                    document.removeEventListener('click', app.view.navbar.menu.clickOutside);
                     window.removeEventListener('keydown', app.view.navbar.menu.escape);
                     window.removeEventListener('keydown', app.view.navbar.menu.focusTrap);
-                },
-
-                // Click outside handler
-                clickOutside: (event) => {
-                    if (!event.target.closest(`[aria-labelledby="${app.element.navbarMenu.id}"]`) && !event.target.closest(`[aria-controls="${app.element.navbarMenu.id}"]`)) {
-                        app.view.navbar.menu.toggle(false);
-                    }
                 },
 
                 // Escape key handler
