@@ -7,7 +7,7 @@ TailwindCSS website starter kit.
 * Accesibility compliant and best practices: The website is designed with accessibility considerations in mind to provide a better user experience for all users while using best practices.
 * SEO-friendly metadata and social media tags: Includes relevant metadata and tags to optimize the website for search engines and improve social media sharing.
 * Sticky navbar with appearance toggle: The navbar remains fixed at the top of the page, and its appearance dynamically changes based on the user's scrolling position.
-* Navbar menu with escape key and focus trap handler: Navbar menu comes with escape key and focus trap handlers, ensuring proper keyboard navigation on all screen sizes.
+* Responsive navbar menu with escape key and focus trap handler: Navbar menu comes with escape key and focus trap handlers, ensuring proper keyboard navigation on all screen sizes.
 
 ## Installation
 Clone this repository to get started.
