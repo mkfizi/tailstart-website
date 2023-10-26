@@ -827,6 +827,10 @@ video {
   align-self: flex-start;
 }
 
+.self-center {
+  align-self: center;
+}
+
 .overflow-y-auto {
   overflow-y: auto;
 }
@@ -1290,6 +1294,10 @@ body{
     gap: 4rem;
   }
 
+  .sm\:self-center {
+    align-self: center;
+  }
+
   .sm\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
@@ -1389,6 +1397,10 @@ body{
     --tw-space-y-reverse: 0;
     margin-top: calc(0px * calc(1 - var(--tw-space-y-reverse)));
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
+  }
+
+  .lg\:self-center {
+    align-self: center;
   }
 
   .lg\:overflow-y-visible {
