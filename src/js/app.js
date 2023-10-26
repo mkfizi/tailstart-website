@@ -74,9 +74,6 @@
                 // Toggle responsive attributes
                 toggleResponsive: () => {
                     if (window.innerWidth >= app.breakpointSize) {
-                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
-                            app.view.navbar.menu.toggle(false);
-                        }
                         app.element.navbarMenu.removeAttribute("aria-hidden");
                     } else {
                         if (!app.element.navbarMenu.getAttribute("aria-hidden")) {
