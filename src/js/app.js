@@ -74,10 +74,16 @@
                 // Toggle responsive attributes
                 toggleResponsive: () => {
                     if (window.innerWidth >= app.breakpointSize) {
+
+                        // Close navbar menu when switching view past breakpoint size
+                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'true') {
+                            app.view.navbar.menu.toggle(false);
+                        }
+                        
                         app.element.navbarMenu.removeAttribute("aria-hidden");
                     } else {
                         if (!app.element.navbarMenu.getAttribute("aria-hidden")) {
-                            app.element.navbarMenu.setAttribute("aria-hidden", true);
+                            app.view.navbar.menu.toggle(false);
                         }
                     }
                 },
