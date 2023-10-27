@@ -64,10 +64,19 @@
                     });
 
                     if (isOpen) {
-                        app.view.navbar.menu.forceFocus();
-                        app.view.navbar.menu.setupEventListeners();
+
+                        // Force focus for focus trap
+                        app.element.navbarMenu.setAttribute('tabindex', 1);
+                        app.element.navbarMenu.focus();
+                        setTimeout(() => {
+                            app.element.navbarMenu.removeAttribute('tabindex');
+                        }, 100);
+
+                        window.addEventListener('keydown', app.view.navbar.menu.escape);
+                        window.addEventListener('keydown', app.view.navbar.menu.focusTrap);
                     } else {
-                        app.view.navbar.menu.removeEventListeners();
+                        window.removeEventListener('keydown', app.view.navbar.menu.escape);
+                        window.removeEventListener('keydown', app.view.navbar.menu.focusTrap);
                     }
                 },
 
@@ -109,27 +118,6 @@
                             targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
                         }
                     });
-                },
-
-                // Trigger force focus
-                forceFocus: () => {
-                    app.element.navbarMenu.setAttribute('tabindex', 1);
-                    app.element.navbarMenu.focus();
-                    setTimeout(() => {
-                        app.element.navbarMenu.removeAttribute('tabindex');
-                    }, 100);
-                },
-
-                // Add event listeners
-                setupEventListeners: () => {
-                    window.addEventListener('keydown', app.view.navbar.menu.escape);
-                    window.addEventListener('keydown', app.view.navbar.menu.focusTrap);
-                },
-
-                // Remove event listeners
-                removeEventListeners: () => {
-                    window.removeEventListener('keydown', app.view.navbar.menu.escape);
-                    window.removeEventListener('keydown', app.view.navbar.menu.focusTrap);
                 },
 
                 // Escape key handler
