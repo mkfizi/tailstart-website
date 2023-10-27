@@ -49,12 +49,16 @@
             },
 
             menu: {
+
+                // Open menu
+                open: () => app.view.navbar.menu.toggle(true),
+
+                // Close menu
+                close: () => app.view.navbar.menu.toggle(false),
             
                 // Toggle menu
-                toggle: (isOpen = null) => {
-                    if (isOpen == null) {
-                        isOpen = (app.element.navbarMenu.getAttribute('aria-hidden') === 'true');
-                    }
+                toggle: (isOpen) => {
+                    console.log("isOpen", isOpen)
                     app.element.navbarMenu.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
                     app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
 
@@ -83,10 +87,10 @@
                 // Toggle responsive attributes
                 toggleResponsive: () => {
                     if (window.innerWidth >= app.breakpointSize) {
-
+                        
                         // Close navbar menu when switching view past breakpoint size
-                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'true') {
-                            app.view.navbar.menu.toggle(false);
+                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
+                            app.view.navbar.menu.close();
                         }
 
                         app.element.navbarMenu.removeAttribute('aria-hidden');
@@ -199,11 +203,11 @@
                             break;
 
                         case app.element.navbarMenuToggle?.id:
-                            app.view.navbar.menu.toggle();
+                            app.view.navbar.menu.open();
                             break;
 
                         case app.element.navbarMenuClose?.id:
-                            app.view.navbar.menu.toggle(false);
+                            app.view.navbar.menu.close();
                             break;
                     }
                 }
