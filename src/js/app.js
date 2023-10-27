@@ -59,7 +59,7 @@
                     app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
 
                     // Set toggle element `[aria-expanded]` attribute value
-                    document.querySelectorAll(`[aria-controls="${app.element.navbarMenu.id}"]`).forEach((currentToggleElement) => {
+                    document.querySelectorAll(`[aria-controls='${app.element.navbarMenu.id}']`).forEach((currentToggleElement) => {
                         currentToggleElement.setAttribute('aria-expanded', isOpen);
                     });
 
@@ -80,10 +80,10 @@
                             app.view.navbar.menu.toggle(false);
                         }
 
-                        app.element.navbarMenu.removeAttribute("aria-hidden");
+                        app.element.navbarMenu.removeAttribute('aria-hidden');
                     } else {
-                        if (!app.element.navbarMenu.getAttribute("aria-hidden")) {
-                            app.view.navbar.menu.toggle(false);
+                        if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
+                            app.element.navbarMenu.setAttribute('aria-hidden', true);
                         }
                     }
                 },
@@ -103,7 +103,7 @@
                             isActive = true;
                         }
 
-                        const targetLink = document.querySelector(`a[href="#${targetSection.id}"]`);
+                        const targetLink = document.querySelector(`a[href='#${targetSection.id}']`);
                         if (targetLink) {
                             targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
                             targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
