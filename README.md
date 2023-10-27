@@ -2,7 +2,7 @@
 TailwindCSS website starter kit.
 
 ## Variants
-- [Javascript Only](https://github.com/mkfizi/tailstart-website)
+- [Javascript](https://github.com/mkfizi/tailstart-website)
 - [AlpineJS](https://github.com/mkfizi/tailstart-website-alpinejs)
 
 ## Features
