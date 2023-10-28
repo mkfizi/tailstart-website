@@ -58,7 +58,6 @@
             
                 // Toggle menu
                 toggle: (isOpen) => {
-                    console.log("isOpen", isOpen)
                     app.element.navbarMenu.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
                     app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
 
