@@ -50,13 +50,13 @@
 
             menu: {
 
-                // Open menu
+                // Open navbar menu
                 open: () => app.view.navbar.menu.toggle(true),
 
-                // Close menu
+                // Close navbar menu
                 close: () => app.view.navbar.menu.toggle(false),
             
-                // Toggle menu
+                // Toggle navbar menu
                 toggle: (isOpen) => {
                     app.element.navbarMenu.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
                     app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
