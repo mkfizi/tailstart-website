@@ -84,15 +84,15 @@
                     }
                 },
 
-                // Toggle responsive attributes
+                // This is to handle when switching view between breakpoint size
                 toggleResponsive: () => {
+
+
+                    // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
                     if (window.innerWidth >= app.breakpointSize) {
-                        
-                        // Close navbar menu when switching view past breakpoint size
                         if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
                             app.view.navbar.menu.close();
                         }
-
                         app.element.navbarMenu.removeAttribute('aria-hidden');
                     } else {
                         if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
@@ -101,7 +101,7 @@
                     }
                 },
 
-                // Toggle active navigation link
+                // Toggle active navbar menu link
                 toggleActiveLink: () => {
                     const scrollPosition = window.scrollY;
 
