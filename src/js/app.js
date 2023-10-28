@@ -17,7 +17,7 @@
     app.element = {
         navbar: document.getElementById('navbar'),
         navbarMenu: document.getElementById('navbar-menu'),
-        navbarMenuToggle: document.getElementById('navbar-menu-toggle'),
+        navbarMenuOpen: document.getElementById('navbar-menu-open'),
         navbarMenuClose: document.getElementById('navbar-menu-close'),
         darkModeToggle: document.getElementById('dark-mode-toggle'),
         sections: document.querySelectorAll('section'),
@@ -43,7 +43,7 @@
             toggle: () => {
                 if (app.element.navbar) {
                     const isScrolled = window.scrollY > (app.element.navbar.offsetHeight - app.element.navbar.clientHeight);
-                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow-sm');
+                    app.element.navbar.classList[isScrolled ? 'add' : 'remove']('border-neutral-200', 'dark:border-neutral-800', 'shadow');
                     app.element.navbar.classList[isScrolled ? 'remove' : 'add']('border-transparent', 'dark:border-transparent');
                 }
             },
@@ -201,7 +201,7 @@
                             app.view.darkMode.toggle();
                             break;
 
-                        case app.element.navbarMenuToggle?.id:
+                        case app.element.navbarMenuOpen?.id:
                             app.view.navbar.menu.open();
                             break;
 
