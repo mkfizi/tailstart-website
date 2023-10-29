@@ -68,7 +68,7 @@
 
                     if (isOpen) {
 
-                        // Force focus for focus trap
+                        // Force focus before initialize focus trap
                         app.element.navbarMenu.setAttribute('tabindex', 1);
                         app.element.navbarMenu.focus();
                         setTimeout(() => {
