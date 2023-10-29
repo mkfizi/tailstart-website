@@ -83,7 +83,7 @@
                     }
                 },
 
-                // This is to handle when switching view between breakpoint size
+                // Handle when switching view between breakpoint size
                 toggleResponsive: () => {
 
 
