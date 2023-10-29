@@ -126,7 +126,7 @@
                 // Escape key handler
                 escape: (event) => {
                     if (event.key === 'Escape') {
-                        app.view.navbar.menu.toggle(false);
+                        app.view.navbar.menu.close();
                     }
                 },
 
