@@ -1222,10 +1222,6 @@ body{
 }
 
 @media (min-width: 640px) {
-  .sm\:right-4 {
-    right: 1rem;
-  }
-
   .sm\:right-8 {
     right: 2rem;
   }
@@ -1370,6 +1366,11 @@ body{
   .lg\:px-0 {
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .lg\:text-left {
