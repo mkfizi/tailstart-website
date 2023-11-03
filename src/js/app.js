@@ -118,7 +118,7 @@
                         const targetLink = app.element.navbarMenu.querySelector(`a[href='#${targetSection.id}']`);
                         if (targetLink) {
                             targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
-                            targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-600', 'dark:text-neutral-400');
+                            targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-500', 'dark:text-neutral-400');
                         }
                     });
                 },
