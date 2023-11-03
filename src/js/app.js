@@ -1,6 +1,6 @@
 /**
  * --------------------------------------------------------------------------
- * Tailstart - Website v0.2.0: app.js
+ * Tailstart - Website v0.2.1: app.js
  * Licensed under MIT (https://github.com/mkfizi/tailstart-website/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -11,7 +11,7 @@
     const app = {};
 
     app.name = 'Tailstart - Website';
-    app.version = '0.2.0';
+    app.version = '0.2.1';
     app.breakpointSize = 1024;
 
     app.element = {
