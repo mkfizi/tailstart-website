@@ -887,8 +887,8 @@ video {
   stroke: #000;
 }
 
-.stroke-neutral-600 {
-  stroke: #525252;
+.stroke-neutral-500 {
+  stroke: #737373;
 }
 
 .stroke-neutral-700 {
@@ -1009,6 +1009,11 @@ video {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-neutral-500 {
+  --tw-text-opacity: 1;
+  color: rgb(115 115 115 / var(--tw-text-opacity));
 }
 
 .text-neutral-600 {
