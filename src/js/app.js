@@ -182,7 +182,7 @@
         // Initialize view
         init: () => {
             app.view.viewportHeight.toggle();
-            if(app.element.navbarMenu) {
+            if (app.element.navbarMenu) {
                 app.view.navbar.menu.toggleResponsive();
             }
             app.view.footer.init();
