@@ -182,7 +182,9 @@
         // Initialize view
         init: () => {
             app.view.viewportHeight.toggle();
-            app.view.navbar.menu.toggleResponsive();
+            if(app.element.navbarMenu) {
+                app.view.navbar.menu.toggleResponsive();
+            }
             app.view.footer.init();
         }
     }
@@ -218,13 +220,18 @@
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
-                app.view.navbar.menu.toggleResponsive();
+                
+                if (app.element.navbarMenu) {
+                    app.view.navbar.menu.toggleResponsive();
+                }
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                app.view.navbar.toggle();
-                app.view.navbar.menu.toggleActiveLink();
+                if (app.element.navbarMenu) {
+                    app.view.navbar.toggle();
+                    app.view.navbar.menu.toggleActiveLink();
+                }
             }
         },
 
