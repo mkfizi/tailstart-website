@@ -51,75 +51,89 @@
             menu: {
 
                 // Open navbar menu
-                open: () => app.view.navbar.menu.toggle(true),
+                open: () => {
+                    if (app.element.navbarMenu) {
+                        app.view.navbar.menu.toggle(true)
+                    }
+                },
 
                 // Close navbar menu
-                close: () => app.view.navbar.menu.toggle(false),
+                close: () => {
+                    if (app.element.navbarMenu) {
+                        app.view.navbar.menu.toggle(false)
+                    }
+                },
             
                 // Toggle navbar menu
                 toggle: (isOpen) => {
-                    app.element.navbarMenu.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
-                    app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
+                    if (app.element.navbarMenu) {
+                        app.element.navbarMenu.classList[isOpen ? 'remove' : 'add']('hidden', 'invisible');
+                        app.element.navbarMenu.setAttribute('aria-hidden', !isOpen);
 
-                    // Set toggle element `[aria-expanded]` attribute value
-                    document.querySelectorAll(`[aria-controls='${app.element.navbarMenu.id}']`).forEach((currentToggleElement) => {
-                        currentToggleElement.setAttribute('aria-expanded', isOpen);
-                    });
+                        // Set toggle element `[aria-expanded]` attribute value
+                        document.querySelectorAll(`[aria-controls='${app.element.navbarMenu.id}']`).forEach((currentToggleElement) => {
+                            currentToggleElement.setAttribute('aria-expanded', isOpen);
+                        });
 
-                    if (isOpen) {
+                        if (isOpen) {
 
-                        // Force focus before initialize focus trap
-                        app.element.navbarMenu.setAttribute('tabindex', 1);
-                        app.element.navbarMenu.focus();
-                        setTimeout(() => {
-                            app.element.navbarMenu.removeAttribute('tabindex');
-                        }, 100);
+                            // Force focus before initialize focus trap
+                            app.element.navbarMenu.setAttribute('tabindex', 1);
+                            app.element.navbarMenu.focus();
+                            setTimeout(() => {
+                                app.element.navbarMenu.removeAttribute('tabindex');
+                            }, 100);
 
-                        window.addEventListener('keydown', app.view.navbar.menu.escape);
-                        window.addEventListener('keydown', app.view.navbar.menu.focusTrap);
-                    } else {
-                        window.removeEventListener('keydown', app.view.navbar.menu.escape);
-                        window.removeEventListener('keydown', app.view.navbar.menu.focusTrap);
+                            window.addEventListener('keydown', app.view.navbar.menu.escape);
+                            window.addEventListener('keydown', app.view.navbar.menu.focusTrap);
+                        } else {
+                            window.removeEventListener('keydown', app.view.navbar.menu.escape);
+                            window.removeEventListener('keydown', app.view.navbar.menu.focusTrap);
+                        }
                     }
                 },
 
                 // Handle when switching view between breakpoint size
                 toggleResponsive: () => {
+                    if (app.element.navbarMenu) {
 
-                    // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
-                    if (window.innerWidth >= app.breakpointSize) {
-                        if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
-                            app.view.navbar.menu.close();
-                        }
-                        app.element.navbarMenu.removeAttribute('aria-hidden');
-                    } else {
-                        if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
-                            app.element.navbarMenu.setAttribute('aria-hidden', true);
+                        // If window width past breakpoint size, close navbar menu and remove `[aria-hidden]` attribute from it
+                        if (window.innerWidth >= app.breakpointSize) {
+                            if (app.element.navbarMenu.getAttribute('aria-hidden') === 'false') {
+                                app.view.navbar.menu.close();
+                            }
+                            app.element.navbarMenu.removeAttribute('aria-hidden');
+                        } else {
+                            if (!app.element.navbarMenu.getAttribute('aria-hidden')) {
+                                app.element.navbarMenu.setAttribute('aria-hidden', true);
+                            }
                         }
                     }
                 },
 
                 // Toggle active navbar menu link
                 toggleActiveLink: () => {
-                    const scrollPosition = window.scrollY;
+                    if (app.element.navbarMenu) {
+                        const scrollPosition = window.scrollY;
 
-                    // Calculate each sections height and offset from document top
-                    app.element.sections.forEach((targetSection) => {
-                        const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
-                        const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
+                        // Calculate each sections height and offset from document top
+                        app.element.sections.forEach((targetSection) => {
+                            const sectionTop = targetSection.offsetTop - app.element.navbar.offsetHeight - parseFloat(getComputedStyle(targetSection).marginTop);
+                            const sectionHeight = targetSection.offsetHeight + parseFloat(getComputedStyle(targetSection).marginTop);
 
-                        // Check if current scroll postion is within section area
-                        let isActive = false;
-                        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                            isActive = true;
-                        }
+                            // Check if current scroll postion is within section area
+                            let isActive = false;
+                            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                                isActive = true;
+                            }
 
-                        const targetLink = app.element.navbarMenu.querySelector(`a[href='#${targetSection.id}']`);
-                        if (targetLink) {
-                            targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
-                            targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-500', 'dark:text-neutral-400');
-                        }
-                    });
+                            const targetLink = app.element.navbarMenu.querySelector(`a[href='#${targetSection.id}']`);
+                            if (targetLink) {
+                                targetLink.classList[isActive ? 'add' : 'remove']('text-black', 'dark:text-white');
+                                targetLink.classList[isActive ? 'remove' : 'add']('text-neutral-500', 'dark:text-neutral-400');
+                            }
+                        });
+                    }
                 },
 
                 // Escape key handler
@@ -181,11 +195,7 @@
         // Initialize view
         init: () => {
             app.view.viewportHeight.toggle();
-
-            if (app.element.navbarMenu) {
-                app.view.navbar.menu.toggleResponsive();
-            }
-            
+            app.view.navbar.menu.toggleResponsive();
             app.view.footer.init();
         }
     }
@@ -221,18 +231,13 @@
             // Handle window 'resize' event
             resize: () => {
                 app.view.viewportHeight.toggle();
-                
-                if (app.element.navbarMenu) {
-                    app.view.navbar.menu.toggleResponsive();
-                }
+                app.view.navbar.menu.toggleResponsive();
             },
 
             // Handle window 'scroll' event
             scroll: () => {
-                if (app.element.navbarMenu) {
-                    app.view.navbar.toggle();
-                    app.view.navbar.menu.toggleActiveLink();
-                }
+                app.view.navbar.toggle();
+                app.view.navbar.menu.toggleActiveLink();
             }
         },
 
